@@ -2,7 +2,7 @@
 <template>
   <div class="import">
     <el-dialog
-      :title="typeid=='1'?'导入源文件':'导入比对'"
+      :title="typeid == '1' ? '导入源文件' : '导入比对'"
       :visible.sync="importdialogShow"
       :before-close="saveOrUpvisibleclose"
       :limit="1"
@@ -17,10 +17,9 @@
             :action="action"
             :on-preview="handlePreview"
             :on-remove="handleRemove"
-            :on-progress='onprogress'
+            :on-progress="onprogress"
             :on-success="success"
             :on-error="error"
-            name="fileName"
             :file-list="fileList"
             accept=".xlsx,.xls"
             :auto-upload="false"
@@ -36,9 +35,7 @@
         </div>
         <div>
           模板下载：
-          <a style="color: blue; cursor: pointer" :href="href"
-            >点击下载</a
-          >
+          <a style="color: blue; cursor: pointer" :href="href">点击下载</a>
         </div>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -65,14 +62,15 @@ export default {
   data() {
     return {
       fileList: [],
-      href:'https://res.luckskill.cn/%E6%BA%90%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF.xlsx',
-      loading:false,
-      action: "http://47.104.245.206:8888/upfile",
+      href:
+        "https://res.luckskill.cn/%E6%BA%90%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF.xlsx",
+      loading: false,
+      action: "http://47.104.245.206:8008/source/upfile",
     };
   },
   async created() {
     if (this.typeid == "2") {
-      this.action = "http://47.104.245.206:8888/compare";
+      this.action = "http://47.104.245.206:8008/compare/upfile";
     }
   },
   mounted() {},
@@ -86,7 +84,7 @@ export default {
     success(response) {
       this.loading.close();
       if (this.typeid == "2") {
-        this.$emit("closeSuccessCompare",response);
+        this.$emit("closeSuccessCompare", response.data);
         this.$message({
           message: "导入成功",
           type: "success",
@@ -99,13 +97,13 @@ export default {
         });
       }
     },
-    onprogress(){
-       this.loading = this.$loading({
-          lock: true,
-          text: '正在导入',
-          spinner: 'el-icon-loading',
-          background: 'rgba(0, 0, 0, 0.7)'
-        });
+    onprogress() {
+      this.loading = this.$loading({
+        lock: true,
+        text: "正在导入",
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.7)",
+      });
     },
     exceed() {
       this.$message({

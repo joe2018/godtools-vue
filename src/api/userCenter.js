@@ -232,9 +232,8 @@ export function findUpdateStatus() {
 //源数据管理
 export function findQueryList(params) {
   return request({
-    url: `/query`,
-    method: 'post',
-    params
+    url: `/source/page/${params.page}/${params.lim}`,
+    method: 'get',
   })
 }
 //删除数据
@@ -243,5 +242,12 @@ export function deleteList(data) {
     url: `/delete`,
     method: 'post',
     data
+  })
+}
+//获取导入的记录
+export function recordList(params) {
+  return request({
+    url: `/source/batch/${params.page}/${params.lim}`,
+    method: 'get',
   })
 }

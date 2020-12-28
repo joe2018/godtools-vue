@@ -91,6 +91,21 @@ const permission = {
               },
             ]
           },
+          {
+            path: '/importManagement',
+            component: 'Layout',
+            redirect: '/importManagement/table',
+            name: 'importManagement',
+            meta: { title: '导入管理', icon: 'el-icon-s-tools' },
+            children: [
+              {
+                path: 'account',
+                name: 'account',
+                component: 'importManagement/account/index',
+                meta: { title: '导入管理', icon: 'el-icon-upload' }
+              },
+            ]
+          },
         ]
         const accessedRoutes = filterAsyncRouter(loginkk)//调用filterAsyncRouter整理后端菜单数据
         accessedRoutes.push({ path: '*', redirect: '/404', hidden: true })//404页面在最后添加
