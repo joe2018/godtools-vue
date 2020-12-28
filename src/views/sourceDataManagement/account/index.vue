@@ -167,11 +167,11 @@
           <div>{{ scope.row.occurrence_time | dateFormat}}</div>
         </template>
       </el-table-column>
-      <el-table-column prop="invoiceNo" label="操作" width="100" fixed="right">
+      <!-- <el-table-column prop="invoiceNo" label="操作" width="100" fixed="right">
         <template slot-scope="scope">
           <el-button type="text" @click="deleteitem([scope.row.order_number])">删除</el-button>
         </template>
-      </el-table-column>
+      </el-table-column> -->
     </el-table>
     <comnPagination
       :total="myPages.total"
