@@ -239,9 +239,16 @@ export function findQueryList(params) {
 //删除数据
 export function deleteList(data) {
   return request({
-    url: `/delete`,
+    url: `/source/delByID`,
     method: 'post',
     data
+  })
+}
+//批次删除
+export function deleteMList(id) {
+  return request({
+    url: `/source/delByBID?batchID=${id}`,
+    method: 'post',
   })
 }
 //获取导入的记录

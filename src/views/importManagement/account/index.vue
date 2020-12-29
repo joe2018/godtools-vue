@@ -56,7 +56,8 @@
         <el-table-column label="操作单号" prop="batch_number"></el-table-column>
         <el-table-column label="写入状态" prop="">
           <template slot-scope="scope">
-          <div>  {{scope.row.batch_type == 1?'正在写入':(scope.row.batch_type == 2?'写入成功':'导入失败') }} </div>
+          <!-- <div>  {{scope.row.batch_type == 1?'正在写入':(scope.row.batch_type == 2?'写入成功':'导入失败') }} </div> -->
+          <div>  {{'写入成功'}} </div>
         </template>
         </el-table-column>
         <el-table-column label="导入时间" prop="">
@@ -64,6 +65,11 @@
           <div>  {{scope.row.batch_time | dateFormat }} </div>
         </template>
         </el-table-column>
+        <el-table-column prop="invoiceNo" label="操作" width="100" fixed="right">
+        <template slot-scope="scope">
+          <el-button type="text" @click="deleteitem([scope.row.batch_number])">删除</el-button>
+        </template>
+      </el-table-column>
       </el-table>
       <comnPagination
         :total="myPages.total"
@@ -78,7 +84,8 @@
 </template>
 <script>
 import {
-  recordList
+  recordList,
+  deleteMList
 } from "@/api/userCenter";
 
 import myTable from "@/components/myTable/index.vue";
@@ -120,6 +127,23 @@ export default {
   },
 
   methods: {
+    deleteitem(id) {
+      this.$confirm("确定删除该次导入的数据？", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+      })
+        .then(({ value }) => {
+          this.loading = true;
+          deleteMList(id).then((res) => {
+            this.getList();
+            this.$message({
+              message: "删除成功",
+              type: "success",
+            });
+          });
+        })
+        .catch(() => {});
+    },
     handleSelectionChange(val) {
       this.deleteArr = [];
       val.forEach((item, index, arr) => {

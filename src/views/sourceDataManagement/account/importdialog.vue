@@ -65,12 +65,12 @@ export default {
       href:
         "https://res.luckskill.cn/%E6%BA%90%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF.xlsx",
       loading: false,
-      action: "http://47.104.245.206:8008/source/upfile",
+      action: "http://117.78.8.215:8008//source/upfile",
     };
   },
   async created() {
     if (this.typeid == "2") {
-      this.action = "http://47.104.245.206:8008/compare/upfile";
+      this.action = "http://117.78.8.215:8008//compare/upfile";
     }
   },
   mounted() {},

@@ -167,11 +167,11 @@
           <div>{{ scope.row.occurrence_time | dateFormat}}</div>
         </template>
       </el-table-column>
-      <!-- <el-table-column prop="invoiceNo" label="操作" width="100" fixed="right">
+      <el-table-column prop="invoiceNo" label="操作" width="100" fixed="right">
         <template slot-scope="scope">
           <el-button type="text" @click="deleteitem([scope.row.order_number])">删除</el-button>
         </template>
-      </el-table-column> -->
+      </el-table-column>
     </el-table>
     <comnPagination
       :total="myPages.total"
@@ -247,7 +247,7 @@ export default {
     handleSelectionChange(val) {
       this.deleteArr = []
       val.forEach((item,index,arr)=>{
-         this.deleteArr.push(item.fields.ddh)
+         this.deleteArr.push(item.order_number)
       })
       this.multipleSelection = val;
     },
@@ -272,7 +272,7 @@ export default {
     },
     deleteitem(arr) {
       var data = {
-        data:arr
+        list:arr
       }
       this.$confirm("确定删除该数据？", "提示", {
         confirmButtonText: "确定",

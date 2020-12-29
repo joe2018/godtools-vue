@@ -34,7 +34,7 @@ module.exports = {
   devServer: {
     proxy: {//反向代理
       '/api': {
-        target: `http://47.104.245.206:8008/`,//工具
+        target: `http://117.78.8.215:8008//`,//工具
         changeOrigin: true,
         pathRewrite: {
           '^/api' : ''
