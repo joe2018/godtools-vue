@@ -56,7 +56,7 @@
         <el-table-column label="操作单号" prop="batch_number"></el-table-column>
         <el-table-column label="写入状态" prop="">
           <template slot-scope="scope">
-          <div>  {{scope.row.batch_type == 0?'导入成功':(scope.row.batch_type == 1?'正在导入中':'导入失败') }} </div>
+          <div>  {{scope.row.batch_type == 1?'正在写入':(scope.row.batch_type == 2?'写入成功':'导入失败') }} </div>
         </template>
         </el-table-column>
         <el-table-column label="导入时间" prop="">
