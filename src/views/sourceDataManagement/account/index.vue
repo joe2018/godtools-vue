@@ -98,7 +98,7 @@
         </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="search()">查询</el-button>
-          <el-button @click="clear">重置</el-button> 
+          <el-button @click="clear">重置</el-button>
           <el-button type="primary"  @click="importdialogShow = true;typeid ='1' ">导入源文件</el-button>
           <el-button type="primary" @click="importdialogShow = true;typeid ='2' ">导入比对</el-button>
           <el-button type="danger" v-show="deleteArr.length>0" @click="deleteitem(deleteArr)">批量删除</el-button>
@@ -110,7 +110,7 @@
       @sort-change="sortChange"
       @selection-change="handleSelectionChange"
       v-loading="loading"
-    > 
+    >
       <el-table-column type="selection"  width="55"></el-table-column>
       <el-table-column type="index" width="50" label="序号" fixed></el-table-column>
       <el-table-column prop="batch_number" label="操作单号" width="155" fixed></el-table-column>
@@ -181,7 +181,7 @@
       @handleSizeChange="handleSizeChange"
     >
     </comnPagination>
-    
+
     </div>
     <contrast v-if="!changeIndex"  :response='response' @closeSuccessCompare='closeSuccessCompare'></contrast>
     <importdialog
@@ -299,8 +299,8 @@ export default {
     getList() {
       findQueryList(this.searchForm).then((res) => {
         this.loading = false;
-        this.tableData = res.content[0];
-        this.myPages.total = Number(res.info.total);
+        this.tableData = res.data.content;
+        this.myPages.total = Number(res.data.info.total);
       });
     },
     clear() {

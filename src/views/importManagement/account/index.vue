@@ -179,8 +179,8 @@ export default {
     getList() {
       recordList(this.searchForm).then((res) => {
         this.loading = false;
-        this.tableData = res.content[0];
-        this.myPages.total = Number(res.info.total);
+        this.tableData = res.data.content;
+        this.myPages.total = Number(res.data.info.total);
       });
     },
     clear() {
