@@ -24,7 +24,7 @@ export function exportExcel(data) {
     responseType: "arraybuffer",
   })
 }
-//导入客户信息 
+//导入客户信息
 export function importExcel(data) {
   return request({
     url: `/finance-tool/customer/importExcel`,
@@ -192,7 +192,7 @@ export function customertemplate() {
 
   })
 }
-//发票明细模板 
+//发票明细模板
 export function invoicetemplate() {
   return request({
     url: `/finance-tool/invoice/template`,
@@ -202,7 +202,7 @@ export function invoicetemplate() {
   })
 }
 
-//收款明细模板 
+//收款明细模板
 export function makeAmounttemplate() {
   return request({
     url: `/finance-tool/makeAmount/template`,
@@ -256,5 +256,14 @@ export function recordList(params) {
   return request({
     url: `/source/batch/${params.page}/${params.lim}`,
     method: 'get',
+  })
+}
+
+//获取比对后的列表
+export function getCompareList(data){
+  return request({
+    url:`/source/getCompareList`,
+    method:'Post',
+    data
   })
 }

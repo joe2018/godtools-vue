@@ -198,7 +198,7 @@
 import {
   findQueryList,
   deleteList,
-
+  getCompareList,
   exportWriteOffExcel,
   delCustomerById,
   delPayeeById,
@@ -227,8 +227,10 @@ export default {
       tableData: [],
       searchForm: {
         page:1,
-        lim:10
+        lim:10,
+        sequenceId:"",
       },
+
       myPages: {
         //分页数据
         limit: 10,
@@ -319,10 +321,14 @@ export default {
       this.getList();
     },
     closeSuccessCompare(response){
-      this.response = response;
+      this.searchForm .sequenceId = response;
+      let compareList = this.getCompareList(this.searchForm);
+      this.response = compareList;
       this.importdialogShow = false;
       this.changeIndex = !this.changeIndex;
-    }
+    },
+
+
   },
 };
 </script>
